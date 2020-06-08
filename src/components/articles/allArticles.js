@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import * as articleActions from "redux/actions/articleActions";
 import { handleError } from "api/apiUtils";
 import ArticlesLayout from "./_Presentational/articlesLayout";
-import { Button } from "react-bootstrap";
+import ArticlePagination from "components/common/pagination/pagination";
 
 function AllArticles(props) {
   let {
@@ -13,9 +13,10 @@ function AllArticles(props) {
     markArticleFav,
     markArticleUnFav,
     loadArticles,
-    favLoading
+    favLoading,
+    hidePagination,
+    hideContentHeading
   } = props;
-  let [currentPageNumber, setCurrentPageNumber] = useState(1);
   let articleLimit = 10;
   let initialArticleOffset = 0;
 
@@ -50,36 +51,6 @@ function AllArticles(props) {
 
   /**
    *
-   * @param {Boolean} totalNumberOfItem
-   * @description This method will return markup for page pagination
-   */
-  let getPaginationMarkup = totalNumberOfItem => {
-    let paginationButtonsCount = totalNumberOfItem / articleLimit;
-    let buttonMarkup = [];
-
-    for (let i = 0; i < paginationButtonsCount; i++) {
-      buttonMarkup.push(
-        <Button
-          variant="outline-success"
-          className={currentPageNumber === i + 1 ? "selected" : ""}
-          onClick={e => {
-            setCurrentPageNumber(i + 1);
-            e.stopPropagation();
-            loadArticles(i * 10);
-          }}
-          value={i}
-          key={i}
-        >
-          {i + 1}
-        </Button>
-      );
-    }
-
-    return buttonMarkup;
-  };
-
-  /**
-   *
    * @param {Object} article
    * @description Method will dispatch the action to mark fav/unFav article
    */
@@ -93,6 +64,10 @@ function AllArticles(props) {
 
   return (
     <div className="all-articles">
+      {!hideContentHeading && (
+        <div className="content-heading">All Articles</div>
+      )}
+
       <ArticlesLayout
         articlesData={articlesData}
         loading={loading}
@@ -100,11 +75,13 @@ function AllArticles(props) {
         toggleArticleStatus={toggleArticleStatusHandler}
         favLoading={favLoading}
       />
-      {!articlesData.articlesCount ? (
-        <> </>
-      ) : (
+      {articlesData.articlesCount && !hidePagination && (
         <div className="pagination-container">
-          {getPaginationMarkup(articlesData.articlesCount)}
+          <ArticlePagination
+            totalNumberOfItem={articlesData.articlesCount}
+            dataLimit={articleLimit}
+            loadList={loadArticlesList}
+          />
         </div>
       )}
     </div>

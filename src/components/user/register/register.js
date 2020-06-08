@@ -25,6 +25,11 @@ function Register(props) {
 
   let { actions } = props;
 
+  /**
+   *
+   * @param {Object} event
+   * @description update the state with data
+   */
   const inputBoxChangeHandler = e => {
     if (e.target.name === userDetails.username) {
       setNameValue(e.target.value);
@@ -38,6 +43,9 @@ function Register(props) {
     }
   };
 
+  /**
+   * @description check the validation of form
+   */
   const isValidForm = () => {
     if (nameValue.length === 0) {
       setError({ nameError: true });
@@ -52,6 +60,9 @@ function Register(props) {
     return true;
   };
 
+  /**
+   * @description This method will dispatch an action to register the user if form is valid
+   */
   const registerUserHandler = () => {
     if (!isValidForm()) {
       return false;

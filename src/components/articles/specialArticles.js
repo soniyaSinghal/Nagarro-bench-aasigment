@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import * as specialArticleActions from "redux/actions/specialArticleActions";
-import { handleError } from "api/apiUtils";
 import ArticlesLayout from "./_Presentational/articlesLayout";
-import { Button } from "react-bootstrap";
+import ArticlePagination from "../common/pagination/pagination";
 
 const SpecialArticle = ({
   articlesData,
@@ -16,9 +15,10 @@ const SpecialArticle = ({
   loadSpecialArticles,
   tagName,
   markArticleFav,
-  markSpecialArticleUnFav
+  markSpecialArticleUnFav,
+  wantMyArticles,
+  contentHeading
 }) => {
-  let [currentPageNumber, setCurrentPageNumber] = useState(1);
   let articleLimit = 10;
   let userDetails = JSON.parse(localStorage.getItem("userDetails"));
   let loggedInUsername =
@@ -40,44 +40,16 @@ const SpecialArticle = ({
    */
   let loadSpecialArticlesList = articleOffset => {
     if (isFav) {
-      loadMyFavArticles(articleLimit, articleOffset, loggedInUsername).catch(
-        error => {
-          handleError("Something went wrong", error);
-        }
-      );
+      loadMyFavArticles(articleLimit, articleOffset, loggedInUsername);
     } else if (isTagAssociated) {
-      loadSpecialArticles(articleLimit, articleOffset, tagName);
+      loadSpecialArticles(articleLimit, articleOffset, { tagName });
+    } else if (wantMyArticles) {
+      loadSpecialArticles(articleLimit, articleOffset, {
+        userName: loggedInUsername
+      });
+    } else {
+      loadSpecialArticles(articleLimit, articleOffset);
     }
-  };
-
-  /**
-   *
-   * @param {Boolean} totalNumberOfItem
-   * @description This method will return the markup for pagination
-   */
-  let getPaginationMarkup = totalNumberOfItem => {
-    let paginationButtonsCount = totalNumberOfItem / articleLimit;
-    let buttonMarkup = [];
-
-    for (let i = 0; i < paginationButtonsCount; i++) {
-      buttonMarkup.push(
-        <Button
-          variant="outline-success"
-          className={currentPageNumber === i + 1 ? "selected" : ""}
-          onClick={e => {
-            setCurrentPageNumber(i + 1);
-            e.stopPropagation();
-            loadSpecialArticlesList(i * 10);
-          }}
-          value={i}
-          key={i}
-        >
-          {i + 1}
-        </Button>
-      );
-    }
-
-    return buttonMarkup;
   };
 
   /**
@@ -113,6 +85,7 @@ const SpecialArticle = ({
 
   return (
     <div className="all-articles">
+      <div className="content-heading">{contentHeading}</div>
       {isTagAssociated && (
         <p className="page-heading">
           Showing Data for Tag: <span className="name">{tagName}</span>{" "}
@@ -126,7 +99,11 @@ const SpecialArticle = ({
         favLoading={false}
       />
       <div className="pagination-container">
-        {getPaginationMarkup(articlesData.articlesCount)}
+        <ArticlePagination
+          totalNumberOfItem={articlesData.articlesCount}
+          dataLimit={articleLimit}
+          loadList={loadSpecialArticlesList}
+        />
       </div>
     </div>
   );

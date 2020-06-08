@@ -27,7 +27,11 @@ function ManageArticleLayout({
           </p>
           {showSkeleton ? (
             <>
-              <Skeleton className="manage-article-skeleton" count={4} />
+              <Skeleton
+                className="manage-article-skeleton"
+                count={4}
+                width="80%"
+              />
             </>
           ) : (
             <>

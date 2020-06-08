@@ -3,7 +3,11 @@ import { _GET, _DELETE, _POST, _PUT } from "api";
 /**
  * @description This method will fetch the Article list from back end.
  */
-export let getArticles = (limit, offset, tagName = "") => {
+export let getArticles = (
+  limit,
+  offset,
+  otherParam = { tagName: "", userName: "" }
+) => {
   let articleLimit = limit ? limit : 10000;
   let articleOffset = offset ? offset : 0;
   let authorization = {
@@ -13,8 +17,8 @@ export let getArticles = (limit, offset, tagName = "") => {
   };
   return _GET(
     `/articles?limit=${articleLimit}&offset=${articleOffset}${
-      tagName ? `&tag=${tagName}` : ""
-    }`,
+      otherParam.tagName ? `&tag=${otherParam.tagName}` : ""
+    }${otherParam.userName ? `&author=${otherParam.userName}` : ""}`,
     authorization
   )
     .then(response => {

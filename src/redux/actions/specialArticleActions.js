@@ -112,12 +112,12 @@ export function deleteMyFavArticle(
 export function loadSpecialArticles(
   articleLimit = 10,
   articleOffset = 0,
-  tagName = ""
+  otherParam
 ) {
   return function(dispatch) {
     dispatch(beginApiCall());
     return articleApi
-      .getArticles(articleLimit, articleOffset, tagName)
+      .getArticles(articleLimit, articleOffset, otherParam)
       .then(result => {
         dispatch(loadSpecialArticlesSuccess(result));
       })

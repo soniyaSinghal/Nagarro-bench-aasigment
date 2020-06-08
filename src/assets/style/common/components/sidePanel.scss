@@ -1,21 +1,36 @@
 .slide-pane {
   &__header {
-    background: $orange-color-1;
-    color: $white-color;
+    background: $color-green;
+    color: $color-white;
   }
   &__close {
     display: none;
   }
-
+  &__title-wrapper {
+    margin-left: 3.2rem;
+  }
   &__content {
     padding: 0;
-    .nav-link {
-      font-size: 1.5rem;
-      padding: 1rem 3rem;
-      display: block;
+    font-size: 1.5rem;
+    .side-bar-link-container {
       &:hover {
-        background: $orange-color;
-        color: $white-color;
+        color: $color-green;
+      }
+      .action-icons {
+        margin-right: 1rem;
+      }
+    }
+    .side-bar-text {
+      color: $color-green;
+      cursor: pointer;
+      padding: 1.5rem 3.2rem;
+      width: 100%;
+      display: inline-block;
+      &-lighter {
+        cursor: pointer;
+        padding: 1.5rem 3.2rem;
+        width: 100%;
+        display: inline-block;
       }
     }
   }

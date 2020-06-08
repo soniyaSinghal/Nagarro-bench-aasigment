@@ -7,5 +7,6 @@ export const config = {
   ARTICLE_EDIT_PAGE_URI: "/edit",
   ARTICLE_ADD_PAGE_URI: "/add",
   TAGGED_ARTICLE_PAGE_URL: "/tagged",
-  FAV_ARTICLE_PAGE_URL: "/favorites"
+  FAV_ARTICLE_PAGE_URL: "/favorites",
+  MY_ARTICLES_PAGE_URI: "/myArticles"
 };

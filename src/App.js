@@ -13,6 +13,7 @@ import ReadArticle from "components/articles/readArticle";
 import ManageArticle from "components/articles/manageArticle";
 import FavoriteArticle from "components/articles/favoriteArticle";
 import TaggedArticles from "components/articles/taggedArticles";
+import MyArticles from "components/articles/myArticles";
 
 function App() {
   return (
@@ -48,7 +49,7 @@ function App() {
           path={`${config.TAGGED_ARTICLE_PAGE_URL}`}
           component={TaggedArticles}
         />
-
+        <Route path={`${config.MY_ARTICLES_PAGE_URI}`} component={MyArticles} />
         {/* place all the routes before un known routes*/}
         <Route path={config.NOT_FOUND_PAGE_URI} component={NotFound} />
         <Route component={NotFound} />

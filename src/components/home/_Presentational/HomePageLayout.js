@@ -42,12 +42,15 @@ function HomePageLayout({ tags, loading, articles }) {
   };
   return (
     <>
-      <div className="header-container">
-        <div className="container-content">
-          <p className="logo-text">Portal</p>
-          <p className="content-text">A place to share your knowledge.</p>
+      {!loggedInUsername && (
+        <div className="header-container">
+          <div className="container-content">
+            <p className="logo-text">Portal</p>
+            <p className="content-text">A place to share your knowledge.</p>
+          </div>
         </div>
-      </div>
+      )}
+
       <Row className="home-page-container">
         <Col lg="8" className="left-section">
           <Articles articlesData={articles} loading={loading} />

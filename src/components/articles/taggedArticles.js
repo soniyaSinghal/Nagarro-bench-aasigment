@@ -8,7 +8,12 @@ const TaggedArticles = ({ history, ...props }) => {
       : "";
 
   return (
-    <SpecialArticles isFav={false} isTagAssociated={true} tagName={tagName} />
+    <SpecialArticles
+      isFav={false}
+      isTagAssociated={true}
+      tagName={tagName}
+      contentHeading="Searched Results"
+    />
   );
 };
 

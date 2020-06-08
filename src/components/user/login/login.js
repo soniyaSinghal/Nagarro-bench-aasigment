@@ -23,16 +23,24 @@ function Login(props) {
 
   let { actions } = props;
 
-  const inputBoxChangeHandler = e => {
-    if (e.target.name === userDetails.email) {
-      setEmailValue(e.target.value);
+  /**
+   *
+   * @param {Object} event
+   * @description update the state with data
+   */
+  const inputBoxChangeHandler = event => {
+    if (event.target.name === userDetails.email) {
+      setEmailValue(event.target.value);
       setError({ emailError: false });
-    } else if (e.target.name === userDetails.password) {
-      setPasswordValue(e.target.value);
+    } else if (event.target.name === userDetails.password) {
+      setPasswordValue(event.target.value);
       setError({ passwordError: false });
     }
   };
 
+  /**
+   * @description check the validation of form
+   */
   const isValidForm = () => {
     if (emailValue.length === 0) {
       setError({ emailError: true });
@@ -44,6 +52,9 @@ function Login(props) {
     return true;
   };
 
+  /**
+   * @description This method will dispatch an action to login the user if form is valid
+   */
   const loginUserHandler = () => {
     if (!isValidForm()) {
       return false;
