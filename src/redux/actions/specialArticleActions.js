@@ -26,23 +26,6 @@ export function markSpecialArticleFavSuccess(article) {
 export function markSpecialArticleUnFavSuccess(article) {
   return { type: types.MARK_SPECIAL_ARTICLE_UN_FAV_OPTIMISE, article };
 }
-export function loadMyFavArticles(
-  articleLimit = 10,
-  articleOffset = 0,
-  userName = ""
-) {
-  return function(dispatch) {
-    dispatch(beginApiCall());
-    return articleApi
-      .getFavArticles(articleLimit, articleOffset, userName)
-      .then(result => {
-        dispatch(loadSpecialArticlesSuccess(result));
-      })
-      .catch(() => {
-        dispatch(apiCallError);
-      });
-  };
-}
 
 export function markMyArticleUnFav(articleData) {
   return function(dispatch) {
@@ -89,11 +72,11 @@ export function markArticleFav(articleData) {
   };
 }
 
-export function deleteMyFavArticle(
+export function deleteSpecialArticle(
   articleName,
   articleLimit,
   articleOffset,
-  userName
+  otherParam
 ) {
   return function(dispatch) {
     dispatch(beginApiCall());
@@ -101,7 +84,7 @@ export function deleteMyFavArticle(
       .deleteArticle(articleName)
       .then(() => {
         dispatch(deleteSpecialArticlesSuccess());
-        dispatch(loadMyFavArticles(articleLimit, articleOffset, userName));
+        dispatch(loadSpecialArticles(articleLimit, articleOffset, otherParam));
       })
       .catch(() => {
         dispatch(apiCallError);

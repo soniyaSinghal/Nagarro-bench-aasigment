@@ -7,9 +7,7 @@ import ArticlePagination from "../common/pagination/pagination";
 const SpecialArticle = ({
   articlesData,
   loading,
-  loadMyFavArticles,
   markMyArticleUnFav,
-  deleteMyFavArticle,
   isFav,
   isTagAssociated,
   loadSpecialArticles,
@@ -17,7 +15,8 @@ const SpecialArticle = ({
   markArticleFav,
   markSpecialArticleUnFav,
   wantMyArticles,
-  contentHeading
+  contentHeading,
+  deleteSpecialArticle
 }) => {
   let articleLimit = 10;
   let userDetails = JSON.parse(localStorage.getItem("userDetails"));
@@ -39,17 +38,22 @@ const SpecialArticle = ({
    * @description  Method will dispatch an action to get the article list
    */
   let loadSpecialArticlesList = articleOffset => {
+    let payload = {};
     if (isFav) {
-      loadMyFavArticles(articleLimit, articleOffset, loggedInUsername);
+      payload = {
+        favoritedUserName: loggedInUsername
+      };
     } else if (isTagAssociated) {
-      loadSpecialArticles(articleLimit, articleOffset, { tagName });
+      payload = { tagName };
     } else if (wantMyArticles) {
-      loadSpecialArticles(articleLimit, articleOffset, {
+      payload = {
         userName: loggedInUsername
-      });
+      };
     } else {
-      loadSpecialArticles(articleLimit, articleOffset);
+      payload = { ...payload };
     }
+
+    loadSpecialArticles(articleLimit, articleOffset, payload);
   };
 
   /**
@@ -75,11 +79,28 @@ const SpecialArticle = ({
    * @description method will dispatch an action to delete article
    */
   let deleteArticleHandler = articleSlug => {
-    deleteMyFavArticle(
+    let payLoad = {};
+
+    if (isFav) {
+      payLoad = {
+        favoritedUserName: loggedInUsername
+      };
+    } else if (isTagAssociated) {
+      payLoad = {
+        tagName
+      };
+    } else if (wantMyArticles) {
+      payLoad = {
+        userName: loggedInUsername
+      };
+    } else {
+      payLoad = { ...payLoad };
+    }
+    deleteSpecialArticle(
       articleSlug,
       articleLimit,
       initialArticleOffset,
-      loggedInUsername
+      payLoad
     );
   };
 
@@ -118,12 +139,11 @@ const mapStateToProps = state => {
 };
 
 let mapDispatchToProps = {
-  loadMyFavArticles: specialArticleActions.loadMyFavArticles,
   markMyArticleUnFav: specialArticleActions.markMyArticleUnFav,
-  deleteMyFavArticle: specialArticleActions.deleteMyFavArticle,
   loadSpecialArticles: specialArticleActions.loadSpecialArticles,
   markArticleFav: specialArticleActions.markArticleFav,
-  markSpecialArticleUnFav: specialArticleActions.markSpecialArticleUnFav
+  markSpecialArticleUnFav: specialArticleActions.markSpecialArticleUnFav,
+  deleteSpecialArticle: specialArticleActions.deleteSpecialArticle
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SpecialArticle);

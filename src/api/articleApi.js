@@ -6,7 +6,7 @@ import { _GET, _DELETE, _POST, _PUT } from "api";
 export let getArticles = (
   limit,
   offset,
-  otherParam = { tagName: "", userName: "" }
+  otherParam = { tagName: "", userName: "", favoritedUserName: "" }
 ) => {
   let articleLimit = limit ? limit : 10000;
   let articleOffset = offset ? offset : 0;
@@ -15,12 +15,19 @@ export let getArticles = (
       ? false
       : true
   };
-  return _GET(
-    `/articles?limit=${articleLimit}&offset=${articleOffset}${
+  let uri = "";
+
+  if (otherParam.favoritedUserName) {
+    uri = `?&favorited=${
+      otherParam.favoritedUserName
+    }&limit=${articleLimit}&offset=${Number(articleOffset)}
+    `;
+  } else {
+    uri = `?limit=${articleLimit}&offset=${Number(articleOffset)}${
       otherParam.tagName ? `&tag=${otherParam.tagName}` : ""
-    }${otherParam.userName ? `&author=${otherParam.userName}` : ""}`,
-    authorization
-  )
+    }${otherParam.userName ? `&author=${otherParam.userName}` : ""}`;
+  }
+  return _GET(`/articles${uri}`, authorization)
     .then(response => {
       return response;
     })
