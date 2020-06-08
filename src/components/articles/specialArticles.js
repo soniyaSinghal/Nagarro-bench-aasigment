@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import * as specialArticleActions from "redux/actions/specialArticleActions";
 import ArticlesLayout from "./_Presentational/articlesLayout";
