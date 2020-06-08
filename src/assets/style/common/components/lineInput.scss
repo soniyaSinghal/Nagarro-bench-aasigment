@@ -1,0 +1,33 @@
+.custom-line-input-container {
+  .custom-line-input {
+    padding: 1rem 1.5rem;
+    font-size: 1.8rem;
+    border-radius: 0.3rem;
+    display: block;
+    width: 100%;
+    color: $color-dark-gray;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 0.25rem;
+    margin-top: 1.5rem;
+    &:focus {
+      outline: none;
+      border: 1px solid $color-dark-gray;
+    }
+    &::placeholder {
+      color: $color-lighter-gray;
+    }
+    &.error {
+      border-color: $color-red;
+    }
+  }
+
+  .line-error {
+    margin-top: 0.4rem;
+    font-size: 1.2rem;
+    color: $color-red;
+    .error-info-icon {
+      margin-right: 0.3rem;
+      display: inline-block;
+    }
+  }
+}

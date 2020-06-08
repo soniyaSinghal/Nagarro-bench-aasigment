@@ -1,0 +1,67 @@
+html {
+  font-size: 62.5%; // 1rem = 10px
+}
+
+@media only screen and (max-width: 768px) {
+  html {
+    font-size: 56.25%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  html {
+    font-size: 50%;
+  }
+}
+
+p,
+label {
+  margin: 0;
+  padding: 0;
+}
+button {
+  border: none;
+  background: none;
+  &:active,
+  &:focus {
+    outline: none;
+  }
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+a,
+a:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+/** over writing the react bootstrap style */
+.row {
+  margin: 0;
+}
+
+@mixin vertical-align($position: relative) {
+  position: $position;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+@mixin absolute-center() {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.ellipsis {
+  overflow: hidden;
+  word-break: break-all;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

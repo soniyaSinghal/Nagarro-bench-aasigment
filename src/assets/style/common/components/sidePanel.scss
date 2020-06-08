@@ -1,0 +1,22 @@
+.slide-pane {
+  &__header {
+    background: $orange-color-1;
+    color: $white-color;
+  }
+  &__close {
+    display: none;
+  }
+
+  &__content {
+    padding: 0;
+    .nav-link {
+      font-size: 1.5rem;
+      padding: 1rem 3rem;
+      display: block;
+      &:hover {
+        background: $orange-color;
+        color: $white-color;
+      }
+    }
+  }
+}

@@ -1,0 +1,65 @@
+.page_header {
+  &_container-1 {
+    padding: 1rem 5rem;
+    position: relative;
+
+    &_logo {
+      color: $color-green;
+      font-size: 2.5rem;
+      font-weight: bold;
+    }
+    &_action {
+      cursor: pointer;
+      position: absolute;
+      right: 5rem;
+      display: inline-flex;
+      top: 1.7rem;
+      &_text {
+        margin-left: 1.5rem;
+        font-size: 1.5rem;
+        cursor: pointer;
+
+        &-lighter {
+          margin-left: 1.5rem;
+          font-size: 1.5rem;
+          color: $color-light-gray;
+          cursor: pointer;
+
+          &:hover {
+            color: $color-green;
+          }
+          .dropdown-list {
+            display: none;
+          }
+          &.show-drop-down {
+            position: relative;
+
+            &:hover {
+              .dropdown-list {
+                display: block;
+                position: absolute;
+                right: 0;
+                list-style: none;
+                display: block;
+                width: 100%;
+                clear: both;
+                font-weight: 400;
+                background-color: #fff;
+                background-clip: padding-box;
+                border: 1px solid rgba(0, 0, 0, 0.15);
+                padding: 0;
+
+                li {
+                  padding: 1rem 1rem 1rem 0.5rem;
+                  &:hover {
+                    background: $color-gray;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

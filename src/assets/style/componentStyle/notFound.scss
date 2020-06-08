@@ -1,0 +1,22 @@
+.not-found-page {
+  // background-repeat: no-repeat;
+  // background-size: cover;
+  // min-height: calc(100vh - 2rem);
+  // background-image: url("../../images/404-Pages.jpg");
+  @include absolute-center();
+  text-align: center;
+  .container-1 {
+    color: orange;
+    font-size: 7rem;
+    span {
+      margin-left: 2rem;
+    }
+  }
+  .go-to-home-container {
+    margin-top: 3rem;
+    .btn {
+      font-size: 3rem;
+      padding: 0.5rem 3rem;
+    }
+  }
+}

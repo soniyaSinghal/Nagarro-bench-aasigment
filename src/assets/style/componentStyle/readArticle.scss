@@ -1,0 +1,71 @@
+.read-article {
+  .banner {
+    color: $color-white;
+    background: $color-light-black;
+    padding: 2rem 5rem;
+    margin-bottom: 2rem;
+    &-title {
+      font-size: 3.5rem;
+      font-weight: 600;
+      margin-bottom: 2rem;
+    }
+    .fav {
+      display: inline-block;
+      margin-left: 4rem;
+      border: 1px solid $color-green;
+      padding: 0.5rem 1rem;
+      font-size: 1.2rem;
+      border-radius: 5px;
+      cursor: pointer;
+      .star-icon {
+        margin-right: 0.5rem;
+      }
+    }
+    .user-logo {
+      display: inline-block;
+      vertical-align: baseline;
+      height: 4rem;
+      width: 4rem;
+      border-radius: 3rem;
+      margin-right: 1rem;
+    }
+    .info {
+      display: inline-block;
+      .name {
+        font-size: 1.8rem;
+      }
+      .date {
+        color: $color-gray;
+        font-size: 1.5rem;
+      }
+    }
+  }
+  .content-container {
+    margin: 2rem 5rem;
+    border-bottom: 0.5px solid $color-light-gray-1;
+    .tags-container {
+      display: flex;
+      padding-bottom: 4rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+    .tag-name {
+      color: $color-green;
+      padding: 0.5rem 1rem;
+      font-size: 1.5rem;
+      border: 1px solid;
+      border-radius: 5px;
+      margin-right: 1rem;
+      margin-bottom: 1rem;
+    }
+    .content-label {
+      color: $color-green;
+      font-size: 2.5rem;
+      font-weight: 600;
+    }
+    .article-text {
+      font-size: 1.7rem;
+      margin-bottom: 2rem;
+    }
+  }
+}

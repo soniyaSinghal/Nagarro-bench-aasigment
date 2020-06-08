@@ -1,0 +1,107 @@
+.card-container {
+  padding: 2rem 1rem;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.16), 0 1px 5px rgba(0, 0, 0, 0.23);
+  margin-bottom: 2rem;
+  cursor: pointer;
+  &.disabled {
+    pointer-events: none;
+    cursor: default;
+  }
+  .card-header-container {
+    .image-container {
+      display: inline-block;
+      margin-right: 1rem;
+
+      .author-image {
+        display: inline-block;
+        vertical-align: unset;
+        height: 32px;
+        width: 32px;
+        border-radius: 30px;
+      }
+    }
+
+    .text-container {
+      display: inline-block;
+      .name {
+        color: $color-green;
+        font-size: 1.8rem;
+        font-weight: 600;
+      }
+      .date {
+        color: #bbb;
+        font-size: 1.2rem;
+      }
+    }
+    .card-header-right-section {
+      display: flex;
+      float: right;
+      clear: both;
+      .action-item-container {
+        border: 1px solid $color-green;
+        padding: 0.8rem;
+        border-radius: 5px;
+        font-size: 1.2rem;
+        color: $color-green;
+        min-width: 4rem;
+        text-align: center;
+        margin-left: 1rem;
+        cursor: pointer;
+        &.no-action {
+          cursor: no-drop;
+          pointer-events: none;
+        }
+        .star-icon {
+          margin-right: 0.2rem;
+        }
+
+        &:hover {
+          background-color: $color-green;
+          color: $color-white;
+        }
+      }
+      .delete-icon-container {
+        border-color: $color-red;
+        color: $color-red;
+
+        &:hover {
+          background-color: $color-red;
+        }
+      }
+    }
+  }
+  .card-body-container {
+    margin-top: 2rem;
+    .article-name {
+      font-size: 2rem;
+      font-weight: 600;
+      @extend .ellipsis;
+    }
+    .article-description {
+      color: $color-light-gray;
+      font-size: 1.8rem;
+      @extend .ellipsis;
+    }
+  }
+  .card-footer-container {
+    margin-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    width: 80%;
+    .no-tag {
+      color: $color-light-gray-1;
+    }
+    .tag-name {
+      border: 1px solid $color-green;
+      border-radius: 5px;
+      padding: 0.5rem 0.8rem;
+      margin-right: 0.8rem;
+      margin-bottom: 0.5rem;
+
+      &:hover {
+        background: $color-green;
+        color: $color-white;
+      }
+    }
+  }
+}

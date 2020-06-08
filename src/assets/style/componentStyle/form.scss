@@ -1,0 +1,31 @@
+.authentication,
+.app-form {
+  padding-bottom: 2rem;
+  .main-container {
+    .main-heading {
+      text-align: center;
+      font-size: 4rem;
+    }
+    .mandatory-text {
+      color: red;
+      margin-bottom: -1rem;
+    }
+
+    .have-account-text {
+      display: inherit;
+      text-align: center;
+      color: $color-green;
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .active-button {
+      margin-top: 1.5rem;
+      padding: 1rem 3rem;
+      font-size: 1.8rem;
+      float: right;
+    }
+    .logout {
+      float: left;
+    }
+  }
+}

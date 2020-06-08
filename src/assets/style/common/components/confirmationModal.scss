@@ -1,0 +1,55 @@
+.confirmation-modal {
+  .modal-dialog {
+    width: 50rem;
+    max-width: 100rem;
+    .modal-content {
+      padding: 1rem 2rem;
+    }
+  }
+  &_header {
+    border: none;
+    .modal-title {
+      font-size: 2.5rem;
+    }
+    .close {
+      font-size: 2.5rem;
+      &:hover {
+        color: $green-color-1;
+      }
+    }
+  }
+  &_body {
+    font-size: 1.8rem;
+  }
+  &_footer {
+    border: none;
+    padding-top: 4rem;
+    @mixin btn($colorValue) {
+      padding: 0.8rem 2rem;
+      font-size: 1.5rem;
+      background: none;
+      border: 1px solid $colorValue;
+      color: $colorValue;
+
+      &:hover {
+        border: 1px solid $colorValue;
+        background: $colorValue;
+        color: $white-color;
+      }
+
+      &:focus,
+      &:active {
+        border: 1px solid $colorValue !important;
+        background: $colorValue !important;
+        color: $white-color !important;
+      }
+    }
+    &_btn-primary {
+      @include btn($firebrick-color-1);
+    }
+    &_btn-secondary {
+      margin-left: 1.2rem;
+      @include btn($green-color);
+    }
+  }
+}

@@ -1,0 +1,73 @@
+.comment-container {
+  padding: 1rem 2rem;
+  border: 0.5px solid $color-green;
+  min-height: 12rem;
+  border-radius: 0.5rem;
+  position: relative;
+  margin-bottom: 2rem;
+  box-shadow: 0px -1px 5px -1px rgba(193, 242, 189, 1);
+
+  .comment-body {
+    font-size: 1.8rem;
+  }
+  .comment-footer {
+    position: absolute;
+    bottom: 1.5rem;
+    width: calc(100% - 4rem);
+    border-top: 1px solid $color-light-gray-1;
+    color: $color-dark-gray;
+    font-size: 1.5rem;
+    padding-top: 1.5rem;
+    .author-name {
+      display: inline-block;
+      margin-right: 1.5rem;
+      color: $color-green;
+    }
+    .clock-icon {
+      vertical-align: middle;
+      margin-right: 0.2rem;
+    }
+    .action-icon-container {
+      float: right;
+      display: inline-block;
+      cursor: pointer;
+
+      .edit-icon {
+        margin-right: 1rem;
+        color: $color-green;
+      }
+      .delete-icon {
+        color: $color-red;
+      }
+    }
+  }
+}
+
+.add-comment-container {
+  border: 0.5px solid $color-green;
+  min-height: 15rem;
+  border-radius: 0.5rem;
+  position: relative;
+  margin-bottom: 2rem;
+  box-shadow: 0px -1px 5px -1px rgba(193, 242, 189, 1);
+  .comment-area {
+    border: none;
+    min-height: 10rem;
+    margin-bottom: 2rem;
+
+    &:focus,
+    &:active {
+      border: none;
+    }
+  }
+
+  .comment-footer {
+    position: relative;
+    bottom: 1rem;
+    right: 2rem;
+    .post-comment {
+      font-size: 1.5rem;
+      float: right;
+    }
+  }
+}

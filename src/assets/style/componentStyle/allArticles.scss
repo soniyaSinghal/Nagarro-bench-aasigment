@@ -1,0 +1,40 @@
+.article-page-layout {
+  .nothing-container {
+    @include absolute-center();
+    text-align: center;
+    .calendar-icon {
+      font-size: 20rem;
+      color: $color-green;
+    }
+    .add-data-text {
+      font-size: 2rem;
+      color: $color-green;
+    }
+  }
+}
+.all-articles {
+  width: 80%;
+  margin: auto;
+  .page-heading {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: $color-green;
+    .name {
+      font-weight: 600;
+    }
+  }
+  .pagination-container {
+    .btn {
+      padding: 1rem;
+      font-size: 1.5rem;
+      border-radius: unset;
+      width: 5rem;
+      border-color: $color-lighter-gray;
+      &.selected {
+        color: $color-white;
+        background: $color-green;
+      }
+    }
+    padding: 1rem;
+  }
+}
