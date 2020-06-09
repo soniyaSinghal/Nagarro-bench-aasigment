@@ -20,7 +20,7 @@ export function Comments({ slug, saveComment, deleteComment, ...props }) {
    */
   useEffect(() => {
     setCommentsListing([...commentsList]);
-  }, [commentsList.length]);
+  }, [commentsList.length, commentsList]);
 
   /**
    *

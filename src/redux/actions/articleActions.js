@@ -26,15 +26,12 @@ export function markArticleFavSuccess(article) {
   return { type: types.MARK_ARTICLE_FAV_OPTIMISE, article };
 }
 
-export function markSelectedArticleFavSuccess(article) {
-  return { type: types.MARK_SELECTED_ARTICLE_FAV_OPTIMISE, article };
-}
-
 export function markArticleUnFavSuccess(article) {
   return { type: types.MARK_ARTICLE_UN_FAV_OPTIMISE, article };
 }
-export function markSelectedArticleUnFavSuccess(article) {
-  return { type: types.MARK_SELECTED_ARTICLE_UN_FAV_OPTIMISE, article };
+
+export function updateSelectedArticle(article) {
+  return { type: types.UPDATE_SELECTED_ARTICLE_OPTIMISE, article };
 }
 
 export function loadArticles(articleLimit = 10, articleOffset = 0) {
@@ -120,7 +117,7 @@ export function markArticleFav(
       .then(result => {
         dispatch(endFavApiCall());
         if (wantToChangeSelectedArticle) {
-          dispatch(markSelectedArticleFavSuccess(result.article));
+          dispatch(updateSelectedArticle(result.article));
         } else {
           dispatch(markArticleFavSuccess(result.article));
         }
@@ -142,7 +139,7 @@ export function markArticleUnFav(
       .then(result => {
         dispatch(endFavApiCall());
         if (wantToChangeSelectedArticle) {
-          dispatch(markSelectedArticleUnFavSuccess(result.article));
+          dispatch(updateSelectedArticle(result.article));
         } else {
           dispatch(markArticleUnFavSuccess(result.article));
         }

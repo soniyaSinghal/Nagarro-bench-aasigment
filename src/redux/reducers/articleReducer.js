@@ -37,11 +37,7 @@ export default function articleReducer(state = initialState.articles, action) {
       );
       return stateCopy;
 
-    case types.MARK_SELECTED_ARTICLE_FAV_OPTIMISE:
-      stateCopy.selectedArticle = { ...action.article };
-      return stateCopy;
-
-    case types.MARK_SELECTED_ARTICLE_UN_FAV_OPTIMISE:
+    case types.UPDATE_SELECTED_ARTICLE_OPTIMISE:
       stateCopy.selectedArticle = { ...action.article };
       return stateCopy;
 

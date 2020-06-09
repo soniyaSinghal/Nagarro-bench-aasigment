@@ -36,7 +36,10 @@ function ReadArticleLayout({ selectedArticle, loading, slug, toggleFav }) {
 
                 <div className="fav" onClick={() => toggleFav(selectedArticle)}>
                   <FontAwesomeIcon icon={faStar} className="star-icon" />
-                  Favorite Article {selectedArticle.favoritesCount}
+                  {selectedArticle.favorited
+                    ? "Mark Unfavorite Article "
+                    : "Mark Favorite Article "}
+                  {selectedArticle.favoritesCount}
                 </div>
                 {loggedInUsername === selectedArticle.author.username && (
                   <Link

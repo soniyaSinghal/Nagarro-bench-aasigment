@@ -12,13 +12,17 @@
     .fav {
       display: inline-block;
       margin-left: 4rem;
-      border: 1px solid $color-green;
+      border: 1px solid $color-green-2;
       padding: 0.5rem 1rem;
       font-size: 1.2rem;
       border-radius: 5px;
       cursor: pointer;
       .star-icon {
         margin-right: 0.5rem;
+      }
+      &:hover {
+        background: $color-green-2;
+        color: $color-white;
       }
     }
     .user-logo {
