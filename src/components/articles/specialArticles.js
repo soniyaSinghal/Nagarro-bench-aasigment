@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import * as specialArticleActions from "redux/actions/specialArticleActions";
 import ArticlesLayout from "./_Presentational/articlesLayout";
 import ArticlePagination from "../common/pagination/pagination";
+import { toast } from "react-toastify";
 
 const SpecialArticle = ({
   articlesData,
@@ -101,7 +102,9 @@ const SpecialArticle = ({
       articleLimit,
       initialArticleOffset,
       payLoad
-    );
+    ).then(() => {
+      toast.success("Article has deleted");
+    });
   };
 
   return (

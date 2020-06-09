@@ -7,6 +7,7 @@ import {
   saveComment,
   deleteComment
 } from "redux/actions/commentAction";
+import { toast } from "react-toastify";
 
 export function Comments({ slug, saveComment, deleteComment, ...props }) {
   let { commentsList } = props;
@@ -71,6 +72,7 @@ export function Comments({ slug, saveComment, deleteComment, ...props }) {
 
     saveComment(slug, comment).then(() => {
       setComment(commentMockData);
+      toast.success("comment has added");
     });
   };
 
@@ -80,7 +82,9 @@ export function Comments({ slug, saveComment, deleteComment, ...props }) {
    * @description This method will dispatch an action to delete comment
    */
   let deleteCommentHandler = commentId => {
-    deleteComment(slug, commentId);
+    deleteComment(slug, commentId).then(() => {
+      toast.success("comment has deleted");
+    });
   };
 
   return (

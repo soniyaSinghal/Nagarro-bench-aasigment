@@ -4,6 +4,7 @@ import * as articleActions from "redux/actions/articleActions";
 import { handleError } from "api/apiUtils";
 import ArticlesLayout from "./_Presentational/articlesLayout";
 import ArticlePagination from "components/common/pagination/pagination";
+import { toast } from "react-toastify";
 
 function AllArticles(props) {
   let {
@@ -46,7 +47,9 @@ function AllArticles(props) {
    * @description This method will dispatch the action to delete the selected article
    */
   let deleteArticleHandler = articleSlug => {
-    deleteArticle(articleSlug, articleLimit, initialArticleOffset);
+    deleteArticle(articleSlug, articleLimit, initialArticleOffset).then(() => {
+      toast.success("Article has deleted");
+    });
   };
 
   /**

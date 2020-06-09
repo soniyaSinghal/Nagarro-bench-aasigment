@@ -15,6 +15,7 @@ import FavoriteArticle from "components/articles/favoriteArticle";
 import TaggedArticles from "components/articles/taggedArticles";
 import MyArticles from "components/articles/myArticles";
 import PrivateRoute from "components/common/privateRoute";
+import Settings from "components/user/settings";
 
 function App() {
   return (
@@ -54,7 +55,10 @@ function App() {
           path={`${config.MY_ARTICLES_PAGE_URI}`}
           component={MyArticles}
         />
-
+        <PrivateRoute
+          path={`${config.SETTINGS_PAGE_URI}`}
+          component={Settings}
+        />
         {/* place all the routes before un known routes*/}
         <Route path={config.NOT_FOUND_PAGE_URI} component={NotFound} />
         <Route component={NotFound} />

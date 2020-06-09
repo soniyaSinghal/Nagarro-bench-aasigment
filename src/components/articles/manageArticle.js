@@ -106,7 +106,6 @@ export const ManageArticle = ({
           slug: selectedArticle.slug
         }
       };
-      // delete selectedArticle.updatedAt;
       updateArticleHandler(dataToBePost);
     } else {
       let dataToBePost = {
@@ -127,7 +126,6 @@ export const ManageArticle = ({
    * @description this method will dispatch an action to update article data
    */
   let updateArticleHandler = selectedArticle => {
-    debugger;
     updateArticle(selectedArticle, selectedArticle.article.slug).then(() => {
       setSaving(false);
       toast.success("Article is updated");

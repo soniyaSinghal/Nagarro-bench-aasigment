@@ -6,7 +6,8 @@ import {
   faBars,
   faHome,
   faSignOutAlt,
-  faNewspaper
+  faNewspaper,
+  faCogs
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import "react-sliding-pane/dist/react-sliding-pane.css";
@@ -129,7 +130,24 @@ export default function SidePanel({ user, logout }) {
             My Articles
           </Link>
         </div>
-
+        <div
+          className="side-bar-link-container"
+          onClick={() => {
+            setSideBarOpened(false);
+          }}
+        >
+          <Link
+            className={`${
+              location.pathname === config.SETTINGS_PAGE_URI
+                ? "side-bar-text"
+                : "side-bar-text-lighter"
+            }`}
+            to={config.SETTINGS_PAGE_URI}
+          >
+            <FontAwesomeIcon className="action-icons" icon={faCogs} />
+            Settings
+          </Link>
+        </div>
         <div
           className="side-bar-link-container"
           onClick={() => {

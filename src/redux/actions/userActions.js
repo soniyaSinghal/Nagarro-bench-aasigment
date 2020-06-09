@@ -14,6 +14,14 @@ export function logout() {
   return { type: types.LOGOUT_SUCCESS };
 }
 
+export function getUserDataSuccess(user) {
+  return { type: types.GET_USER_DATA_SUCCESS, user };
+}
+
+export function updateUserDetailsSuccess(user) {
+  return { type: types.GET_USER_DATA_SUCCESS, user };
+}
+
 export function registerUser(userData) {
   return function(dispatch) {
     dispatch(beginApiCall());
@@ -61,5 +69,37 @@ export function logoutUser() {
     localStorage.removeItem("userDetails");
     localStorage.removeItem("jwtToken");
     dispatch(logout());
+  };
+}
+
+export function getUserData() {
+  return function(dispatch) {
+    dispatch(beginApiCall());
+
+    return userApi
+      .getUserDetails()
+      .then(result => {
+        dispatch(getUserDataSuccess(result.user));
+      })
+      .catch(error => {
+        dispatch(apiCallError);
+        return Promise.reject(error);
+      });
+  };
+}
+
+export function updateUserDetails() {
+  return function(dispatch) {
+    dispatch(beginApiCall());
+
+    return userApi
+      .getUserDetails()
+      .then(result => {
+        dispatch(updateUserDetailsSuccess(result.user));
+      })
+      .catch(error => {
+        dispatch(apiCallError);
+        return Promise.reject(error);
+      });
   };
 }

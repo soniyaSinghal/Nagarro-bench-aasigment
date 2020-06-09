@@ -11,7 +11,8 @@ const LineInput = ({
   onChange,
   error,
   type,
-  maxLength
+  maxLength,
+  disabled
 }) => {
   return (
     <div className="custom-line-input-container">
@@ -26,6 +27,7 @@ const LineInput = ({
         onChange={onChange}
         maxLength={maxLength ? maxLength : ""}
         autoComplete="false"
+        disabled={disabled}
       ></input>
       {error && (
         <div className="line-error">

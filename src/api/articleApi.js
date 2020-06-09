@@ -66,7 +66,6 @@ export let getArticle = articleName => {
  * @description This method will update the data of article
  */
 export let updateArticle = (articleData, articleSlug) => {
-  debugger;
   return _PUT(`/articles/${articleSlug}`, articleData)
     .then(response => {
       return response;

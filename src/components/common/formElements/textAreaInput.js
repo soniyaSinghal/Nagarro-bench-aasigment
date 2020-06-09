@@ -10,8 +10,8 @@ const TextAreaInput = ({
   value,
   onChange,
   error,
-  type,
-  maxLength
+  maxLength,
+  disabled
 }) => {
   return (
     <div className="custom-line-input-container">
@@ -25,6 +25,7 @@ const TextAreaInput = ({
         } ${error ? " error" : ""}`}
         value={value}
         onChange={onChange}
+        disabled={disabled}
         maxLength={maxLength ? maxLength : ""}
       ></textarea>
       {error && (
