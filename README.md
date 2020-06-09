@@ -21,8 +21,6 @@ This project is created using CRA and Redux.
 ## Down load code from
 
 https://github.com/soniyaSinghal/Nagarro-bench-assignment.git
-or
-git@github.com:soniyaSinghal/Nagarro-bench-assignment.git
 
 ## Deployed app
 
