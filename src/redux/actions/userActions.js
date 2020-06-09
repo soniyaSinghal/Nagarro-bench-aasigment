@@ -88,14 +88,16 @@ export function getUserData() {
   };
 }
 
-export function updateUserDetails() {
+export function updateUserDetails(data) {
   return function(dispatch) {
     dispatch(beginApiCall());
 
     return userApi
-      .getUserDetails()
+      .updateUserDetails(data)
       .then(result => {
-        dispatch(updateUserDetailsSuccess(result.user));
+        if(result && result.user) {        
+          dispatch(updateUserDetailsSuccess(result.user));
+        }
       })
       .catch(error => {
         dispatch(apiCallError);
