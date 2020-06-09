@@ -16,7 +16,7 @@ This project is created using CRA and Redux.
 2. Search the article on the basis of attached tag.
 3. User can mark the article as favorite/un-favorite.
 4. User can see the list of his own articles as well as own favorites articles.
-5. User can see/update his own profile.
+5. User can read/update his own profile.
 
 ## Down load code from
 
