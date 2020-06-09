@@ -17,7 +17,7 @@ function SettingsPageLayout({
 }) {
   let history = useHistory();
   return (
-    <div className="app-form manage-article">
+    <div className="app-form manage-article settings">
       <Row className="main-container">
         <Col xs="12" md={{ span: 8, offset: 2 }}>
           <p className="main-heading">{pageHeading}</p>

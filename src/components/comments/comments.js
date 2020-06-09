@@ -72,7 +72,7 @@ export function Comments({ slug, saveComment, deleteComment, ...props }) {
 
     saveComment(slug, comment).then(() => {
       setComment(commentMockData);
-      toast.success("comment has added");
+      toast.success("Comment has added");
     });
   };
 
@@ -83,7 +83,7 @@ export function Comments({ slug, saveComment, deleteComment, ...props }) {
    */
   let deleteCommentHandler = commentId => {
     deleteComment(slug, commentId).then(() => {
-      toast.success("comment has deleted");
+      toast.success("Comment has deleted");
     });
   };
 
