@@ -14,6 +14,7 @@ import ManageArticle from "components/articles/manageArticle";
 import FavoriteArticle from "components/articles/favoriteArticle";
 import TaggedArticles from "components/articles/taggedArticles";
 import MyArticles from "components/articles/myArticles";
+import PrivateRoute from "components/common/privateRoute";
 
 function App() {
   return (
@@ -24,32 +25,36 @@ function App() {
         <Route exact path={config.HOME_PAGE_URI} component={Home}></Route>
         <Route path={config.REGISTER_PAGE_URI} component={Register}></Route>
         <Route path={config.LOGIN_PAGE_URI} component={Login}></Route>
-        <Route
+        <PrivateRoute
           exact
           path={config.ARTICLES_PAGE_URI}
           component={AllArticles}
-        ></Route>
-        <Route
+        ></PrivateRoute>
+        <PrivateRoute
           path={`${config.ARTICLES_PAGE_URI}/:slug`}
           component={ReadArticle}
         />
-        <Route
+        <PrivateRoute
           path={`${config.ARTICLE_EDIT_PAGE_URI}/:slug`}
           component={ManageArticle}
         />
-        <Route
+        <PrivateRoute
           path={`${config.ARTICLE_ADD_PAGE_URI}`}
           component={ManageArticle}
         />
-        <Route
+        <PrivateRoute
           path={`${config.FAV_ARTICLE_PAGE_URL}`}
           component={FavoriteArticle}
         />
-        <Route
+        <PrivateRoute
           path={`${config.TAGGED_ARTICLE_PAGE_URL}`}
           component={TaggedArticles}
         />
-        <Route path={`${config.MY_ARTICLES_PAGE_URI}`} component={MyArticles} />
+        <PrivateRoute
+          path={`${config.MY_ARTICLES_PAGE_URI}`}
+          component={MyArticles}
+        />
+
         {/* place all the routes before un known routes*/}
         <Route path={config.NOT_FOUND_PAGE_URI} component={NotFound} />
         <Route component={NotFound} />
